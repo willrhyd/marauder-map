@@ -9,10 +9,10 @@ async function loadMap(currentLocation) {
     let mapOptions;
     let marker;
     try {
-        const setLocation = await ajaxPost('http://localhost:3000/map', currentLocation)
+        const setLocation = await ajaxPost('https://multi-user-gmap.herokuapp.com/map', currentLocation)
         if(setLocation.status == 200){
         
-            const users = await fetch('http://localhost:3000/map')
+            const users = await fetch('https://multi-user-gmap.herokuapp.com/map')
             const data = await users.json()
             
             data.forEach(mark => {
@@ -53,9 +53,9 @@ async function track(position){
     }
 
     try {
-        const setLocation = await ajaxPost('http://localhost:3000/map', currentLocation) //send latest position
+        const setLocation = await ajaxPost('https://multi-user-gmap.herokuapp.com/map', currentLocation) //send latest position
         if(setLocation.status == 200){
-            const users = await fetch('http://localhost:3000/map') //if set correctly then get the updated active users array
+            const users = await fetch('https://multi-user-gmap.herokuapp.com/map') //if set correctly then get the updated active users array
             const data = await users.json()
             
             console.log(data)
@@ -146,7 +146,7 @@ const onInit = async function (){
     const id_token = { id_token: googleUser.getAuthResponse().id_token};
     
     // Send the ID token to back end to identify each user
-    const signIn = await ajaxPost('http://localhost:3000/signin', id_token)
+    const signIn = await ajaxPost('https://multi-user-gmap.herokuapp.com/signin', id_token)
     
         if(signIn.status === 200){
             console.log("signed in!")
@@ -240,7 +240,7 @@ async function onSignIn(googleUser) {
         const id_token = { id_token: googleUser.getAuthResponse().id_token};
 
         // Send the ID token to back end to identify each user
-        const signIn = await ajaxPost('http://localhost:3000/signin', id_token)
+        const signIn = await ajaxPost('https://multi-user-gmap.herokuapp.com/signin', id_token)
         console.log(signIn.status)
         if(signIn.status === 200){
             console.log("signed in!")
@@ -257,7 +257,7 @@ async function onSignIn(googleUser) {
   function signOut() {
     let auth2 = gapi.auth2.getAuthInstance().signOut()
     .then(async ()=>{
-        let signout = await fetch('http://localhost:3000/signout')
+        let signout = await fetch('https://multi-user-gmap.herokuapp.com/signout')
         if(signout.status == 200){
             console.log('Signed out successfully!')
             document.getElementById("map").remove()
