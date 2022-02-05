@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+        <script src="index.js" ></script>
+        <script src="https://apis.google.com/js/platform.js?onload=init" async></script>
+        <meta name="google-signin-client_id" content="615359316686-bjjsornl9blc9v3njfamm13aind6lbh8.apps.googleusercontent.com">
+
+        <!-- Load React. -->
+        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+        <!-- <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script> -->
+        
+        <!-- Load our React component. -->
+        <!-- <script src="logged_in_users.js"></script>> -->
+    </head>
+    <body>
+        <div id="app-container">
+            
+            
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+           
+            <a href="#" onclick="signOut();">Sign out</a>
+
+            <!-- Use React to display a list of signed in users -->
+            <div id="users_table">
+
+            </div>             
+        </div>
+        
+        <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjFuUoaWJwrY_tDKabhPeTHebBVbWifUg&libraries=&v=weekly"
+      async
+    ></script>
+    </body>
+</html>
